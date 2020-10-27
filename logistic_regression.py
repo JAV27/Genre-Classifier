@@ -43,5 +43,5 @@ print(accuracy_score(test_y, preds))
 print(confusion_matrix(test_y, preds))
 for i in range(3):
     print(i)
-    print(precision_score(test_y, preds, labels=[i], average="weighted"))
-    print(recall_score(test_y, preds, labels=[i], average="weighted"))
+    print(precision_score(test_y, preds, labels=[i], average="micro"))
+    print(recall_score(test_y, preds, labels=[i], average="micro"))
