@@ -45,19 +45,3 @@ for i in range(3):
     print(i)
     print(precision_score(test_y, preds, labels=[i], average="weighted"))
     print(recall_score(test_y, preds, labels=[i], average="weighted"))
-
-#Precision
-# if (matrix[0][0] + matrix[1][0] + matrix[2][0]) == 0:
-#     precisionEducation = 0
-# else:
-#     precisionEducation = matrix[0][0]/(matrix[0][0] + matrix[1][0] + matrix[2][0])
-
-# if (matrix[1][1] + matrix[0][1] + matrix[2][1]) == 0:
-# precisionFilm = 0
-# else:
-# precisionFilm = matrix[1][1]/(matrix[1][1] + matrix[0][1] + matrix[2][1])
-
-# if (matrix[1][1] + matrix[0][1] + matrix[2][1]) == 0:
-# precisionNeither = 0
-# else:
-# precisionNeither = matrix[2][2]/(matrix[2][2] + matrix[0][2] + matrix[1][2])
