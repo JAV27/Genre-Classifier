@@ -1,7 +1,7 @@
 from numpy.lib.scimath import log
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
 
@@ -9,20 +9,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("data.csv", index_col="index")
+df = pd.read_csv("new_data.csv", index_col="index").dropna()
 df.columns = ["label", "text"]
 
 vectorizer = CountVectorizer(token_pattern=r"(?u)\b\w+'?\w*\b", stop_words="english")
 labels = df["label"].to_numpy()
 label_encoder = LabelEncoder()
 label_encoder.fit(["Rock", "Pop", "Hip Hop"])
-
 x = vectorizer.fit_transform(df["text"].to_numpy())
 y = label_encoder.transform(labels)
 
-train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.4, random_state=42)
+train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.2, random_state=42)
 
-logreg = LogisticRegression()
+# scaler = StandardScaler(with_mean=False)
+# scaler.fit(train_x)
+# train_x, test_x = scaler.transform(train_x), scaler.transform(test_x)
+
+logreg = LogisticRegression(C=100)
 logreg.fit(train_x, train_y)
 
 weights = logreg.coef_
