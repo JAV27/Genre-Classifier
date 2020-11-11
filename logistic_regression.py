@@ -9,7 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("new_data.csv", index_col="index").dropna()
+df = pd.read_csv("new_data2.csv", index_col="index").dropna()
 df.columns = ["label", "text"]
 
 vectorizer = CountVectorizer(token_pattern=r"(?u)\b\w+'?\w*\b", stop_words="english")
